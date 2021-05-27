@@ -6,7 +6,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import model.ServiceProvider;
+import buka.model.ServiceProvider;
+import buka.repository.BukaRepository;
 
 @Configuration
 public class LoadDatabase {
