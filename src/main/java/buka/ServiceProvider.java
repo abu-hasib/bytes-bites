@@ -1,25 +1,30 @@
 package buka;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+//import javax.persistence.ManyToOne;
+
+@Entity
 
 class ServiceProvider {
 	private @Id @GeneratedValue Long id;
 	private String name;
 	private String email;
-	private Long number;
-	private City city;
-	private ArrayList<Meal> meal;
+	private int number;
+//	private @ManyToOne City city;
+//	private ArrayList<Meal> meal;
+	ServiceProvider() {
+	}
 
-	public ServiceProvider(Long id, String name, String email, Long number, City city, ArrayList<Meal> meal) {
-		this.id = id;
+	public ServiceProvider(String name, String email, int number) {
 		this.name = name;
 		this.email = email;
 		this.number = number;
-		this.city = city;
-		this.meal = meal;
+//		this.city = city;
+//		this.meal = meal;
 	}
 
 	public String getName() {
@@ -38,28 +43,33 @@ class ServiceProvider {
 		this.email = email;
 	}
 
-	public Long getNumber() {
+	public int getNumber() {
 		return number;
 	}
 
-	public void setNumber(Long number) {
+	@Override
+	public String toString() {
+		return "ServiceProvider [id=" + id + ", name=" + name + ", email=" + email + ", number=" + number + "]";
+	}
+
+	public void setNumber(int number) {
 		this.number = number;
 	}
 
-	public City getCity() {
-		return city;
-	}
+//	public City getCity() {
+//		return city;
+//	}
+//
+//	public void setCity(City city) {
+//		this.city = city;
+//	}
 
-	public void setCity(City city) {
-		this.city = city;
-	}
+//	public ArrayList<Meal> getMeal() {
+//		return meal;
+//	}
 
-	public ArrayList<Meal> getMeal() {
-		return meal;
-	}
-
-	public void setMeal(ArrayList<Meal> meal) {
-		this.meal = meal;
-	}
+//	public void setMeal(ArrayList<Meal> meal) {
+//		this.meal = meal;
+//	}
 
 }
