@@ -9,9 +9,7 @@ class City {
 	
 	City() {}
 	
-	public City(Long id, String name) {
-		super();
-		this.id = id;
+	public City(String name) {
 		this.name = name;
 	}
 
