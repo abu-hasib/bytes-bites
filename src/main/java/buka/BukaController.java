@@ -5,7 +5,8 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import model.ServiceProvider;
+import buka.model.ServiceProvider;
+import buka.repository.BukaRepository;
 
 @RestController
 public class BukaController {
