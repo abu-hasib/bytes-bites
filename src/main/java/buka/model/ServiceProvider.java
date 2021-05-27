@@ -1,14 +1,20 @@
 package buka.model;
 
-//import java.util.ArrayList;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name =  "Buka")
 public class ServiceProvider {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.AUTO ) 
@@ -16,62 +22,32 @@ public class ServiceProvider {
 	private String name;
 	private String email;
 	private int number;
-//	private @ManyToOne City city;
-//	private ArrayList<Meal> meal;
+	@OneToMany (
+			mappedBy = "provider",
+			cascade = CascadeType.ALL,
+			orphanRemoval = true
+			)
+	private List<Meal> meals = new ArrayList<>();
+	@ManyToOne
+	@JoinColumn(name = "city")
+	private City city;
+	
 	ServiceProvider() {
 	}
-
-	public ServiceProvider(String name, String email, int number) {
+	
+	public ServiceProvider(String name, String email, int number, City city) {
 		this.name = name;
 		this.email = email;
 		this.number = number;
-//		this.city = city;
-//		this.meal = meal;
+		this.city = city;
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public int getNumber() {
-		return number;
+	
+	public void setMeals(List<Meal> meals) {
+		this.meals = meals;
 	}
 
 	@Override
 	public String toString() {
 		return "ServiceProvider [id=" + id + ", name=" + name + ", email=" + email + ", number=" + number + "]";
 	}
-
-	public void setNumber(int number) {
-		this.number = number;
-	}
-
-//	public City getCity() {
-//		return city;
-//	}
-//
-//	public void setCity(City city) {
-//		this.city = city;
-//	}
-
-//	public ArrayList<Meal> getMeal() {
-//		return meal;
-//	}
-
-//	public void setMeal(ArrayList<Meal> meal) {
-//		this.meal = meal;
-//	}
-
 }
